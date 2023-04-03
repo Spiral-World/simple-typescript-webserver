@@ -6,6 +6,8 @@ on:
 env:
   APP_NAME: derapp
   IMAGE_TAG: mat112800/derapp:${{ github.sha }}
+  KUBERNETES_NAMESPACE: m324-team4
+  BASE_URL: dominicstreit.m324.hackerman.ch
 
 jobs:
   build-and-deploy:
@@ -41,8 +43,10 @@ jobs:
         uses: swdotcom/update-and-apply-kubernetes-configs@v1
         with:
           k8-config-file-paths: |
-            ./k8/simple-typescript-webserver-default-networkpolicy.yaml
-            ./k8/webserver-deployment.yaml
-            ./k8/webserver-service.yaml
+            ./k8/00_namespace
+            ./k8/01_deployment.yml
+            ./k8/02_service.yml
+            ./k8/03_ingress.yml
+            ./k8/04_ingress_example.yml
 
           replacement-method: defined
