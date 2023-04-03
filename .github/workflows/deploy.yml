@@ -4,12 +4,8 @@ on:
       - master
 
 env:
-  KUBERNETES_NAMESPACE: my-garden
   APP_NAME: derApp
   IMAGE_TAG: mat112800/derApp:${{ github.sha }}
-  LETSENCRYPT_STAGE: prod
-  BASE_URL: mygarden.hackerman.ch
-  STRAPI_URL: mygarden-api.hackerman.ch
 
 jobs:
   build-and-deploy:
@@ -45,13 +41,8 @@ jobs:
         uses: swdotcom/update-and-apply-kubernetes-configs@v1
         with:
           k8-config-file-paths: |
-            .k8s/namespace.yml
-            .k8s/ui/nuxt-envs.yml
-            .k8s/ui/deployment.yml
-            .k8s/ui/service.yml
-            .k8s/ui/ingress.yml
-            .k8s/api/strapi-envs.yml
-            .k8s/api/deployment.yml
-            .k8s/api/service.yml
-            .k8s/api/ingress.yml
+            .k8s/simple-typescript-webserver-default-networkpolicy.yaml
+            .k8s/webserver-deployment.yaml
+            .k8s/webserver-service.yaml
+
           replacement-method: defined

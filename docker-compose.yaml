@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  webserver:
+    image: mat112800/derApp:latest
+    ports:
+     - 3000:3000
