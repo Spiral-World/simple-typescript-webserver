@@ -12,6 +12,12 @@ app.get('/', (req: Request, res: Response) => {
   res.send(`<h1>Hello World!</h1><p>Host: ${os.hostname()}</p>`);
 });
 
+// route for / that returns The Current time
+app.get('/log/time', (req: Request, res: Response) => {
+  const currentTime = new Date().toLocaleTimeString();
+  res.send(`Time: ${currentTime}`);
+});
+
 const serverPort = process.env.PORT || 3000;
 server.listen(serverPort, () => {
   // eslint-disable-next-line no-console
