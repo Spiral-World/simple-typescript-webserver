@@ -4,8 +4,8 @@ on:
       - master
 
 env:
-  APP_NAME: derApp
-  IMAGE_TAG: mat112800/derApp:${{ github.sha }}
+  APP_NAME: derapp
+  IMAGE_TAG: mat112800/derapp:${{ github.sha }}
 
 jobs:
   build-and-deploy:
